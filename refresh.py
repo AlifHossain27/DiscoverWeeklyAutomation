@@ -10,7 +10,7 @@ class Refresh:
         self.refresh_token = refresh_token
         self.base_64 = base_64
 
-    def refreshing(self):
+    def refreshing(self)-> str:
 
         query = "https://accounts.spotify.com/api/token"
 
