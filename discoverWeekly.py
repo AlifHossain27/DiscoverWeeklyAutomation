@@ -4,15 +4,15 @@ import requests
 from datetime import date
 from refresh import Refresh
 
-user_id= os.getenv("USER")
-discover_weekly_id= os.getenv("DISCOVER_WEEKLY_ID")
+user_id = os.getenv("USER")
+discover_weekly_id = os.getenv("DISCOVER_WEEKLY_ID")
 
 class SaveSongs:
 
     def __init__(self):
-        self.user_id=user_id
-        self.token=""
-        self.discover_weekly_id=discover_weekly_id
+        self.user_id = user_id
+        self.token = ""
+        self.discover_weekly_id = discover_weekly_id
         self.tracks = ""
         self.new_playlist_id = ""
 
@@ -24,7 +24,7 @@ class SaveSongs:
         query = f"https://api.spotify.com/v1/playlists/{discover_weekly_id}/tracks"
 
         response = requests.get(query,
-                                headers={"Content-Type": "application/json",
+                                headers = {"Content-Type": "application/json",
                                          "Authorization": "Bearer {}".format(self.token)})
 
         response_json = response.json()
@@ -36,7 +36,7 @@ class SaveSongs:
         self.add_to_playlist()
 
     
-    def create_playlist(self):
+    def create_playlist(self)-> str:
         # Creating a new playlist
         print("Trying to create playlist...")
         today = date.today()
